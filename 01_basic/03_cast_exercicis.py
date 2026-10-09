@@ -6,8 +6,16 @@
 # Exercici 1
 # Demana a l'usuari quants paquets ha rebut un encaminador. Converteix el valor
 # introduït a un nombre enter, suma-hi 1200 paquets i mostra el total.
+paquets = input("Introdueix el nombre de paquets rebuts: ")
+paquets_int = int(paquets)
+total_paquets = paquets_int + 1200
+print("Total de paquets rebuts:", total_paquets)
 
 # Exercici 2
 # Demana a l'usuari la velocitat d'una connexió en Mbps. Converteix el valor
 # introduït a un nombre decimal i calcula la velocitat equivalent en MB/s
 # dividint-la per 8. Mostra el resultat.
+velocitat_mbps = input("Introdueix la velocitat de connexió en Mbps: ")
+velocitat_mbps_float = float(velocitat_mbps)
+velocitat_mbs = velocitat_mbps_float / 8
+print("Velocitat de connexió en MB/s:", velocitat_mbs)
