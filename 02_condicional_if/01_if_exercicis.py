@@ -110,7 +110,15 @@ else:
 # de comunicacions. Indica si el nivell és crític (menys del 20 %), baix
 # (del 20 % al 49 %) o suficient (50 % o més). Rebutja valors fora del rang
 # del 0 % al 100 %.
-
+percentatge_bateria = int(input("Introdueix el percentatge de bateria del SAI: "))
+if percentatge_bateria < 0 or percentatge_bateria > 100:
+    print("Percentatge invàlid. Ha de ser entre 0 i 100.")
+elif percentatge_bateria < 20:
+    print("Nivell crític de bateria")
+elif percentatge_bateria < 50:
+    print("Nivell baix de bateria")
+else:
+    print("Nivell suficient de bateria")
 # Exercici 10: Qualitat d'una connexió de xarxa
 # Demana la latència en mil·lisegons i el percentatge de paquets perduts.
 # Rebutja una latència negativa o una pèrdua fora del rang del 0 % al 100 %.
@@ -118,7 +126,18 @@ else:
 # i la pèrdua és de l'1 % o menys; bona si és de 80 ms o menys i la pèrdua és
 # del 3 % o menys; acceptable si és de 150 ms o menys i la pèrdua és del 5 %
 # o menys; en qualsevol altre cas, deficient.
-
+latencia = int(input("Introdueix la latència (en ms): "))
+perdua = float(input("Introdueix el percentatge de paquets perduts: "))
+if latencia < 0 or perdua < 0 or perdua > 100:
+    print("Valors invàlids. La latència no pot ser negativa i la pèrdua ha de ser entre 0 i 100.")
+elif latencia <= 30 and perdua <= 1:
+    print("Connexió excel·lent")
+elif latencia <= 80 and perdua <= 3:
+    print("Connexió bona")
+elif latencia <= 150 and perdua <= 5:
+    print("Connexió acceptable")
+else:
+    print("Connexió deficient")
 # Exercici 11: Cost mensual d'un pla de dades
 # Demana el tipus de pla (bàsic o plus) i el consum mensual en GB.
 # El pla bàsic costa 10 € i inclou 10 GB; cada GB addicional costa 1,50 €.
