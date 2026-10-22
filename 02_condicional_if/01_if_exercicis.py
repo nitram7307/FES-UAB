@@ -5,16 +5,44 @@
 # Exercici 1: Determinar el més gran de dos nombres
 # Demana a l'usuari que introdueixi dos nombres i mostra un missatge
 # que indiqui quin és més gran o si són iguals.
-
+nombre1 = float(input("Introdueix el primer nombre: "))
+nombre2 = float(input("Introdueix el segon nombre: "))
+if nombre1 > nombre2:
+    print(f"El nombre més gran és: {nombre1}")
+elif nombre2 > nombre1:
+    print(f"El nombre més gran és: {nombre2}")
+else:
+    print("Els dos nombres són iguals.") 
 # Exercici 2: Calculadora senzilla
 # Demana a l'usuari dos nombres i una operació (+, -, *, /).
 # Fes l'operació i mostra'n el resultat (gestiona la divisió per zero).
+mobre = float(input("Introdueix el primer nombre: "))
+nombre2 = float(input("Introdueix el segon nombre: "))
+operacio = input("Introdueix l'operació (+, -, *, /): ")
+if operacio == "+":
+    resultat = nombre1 + nombre2
+elif operacio == "-":
+    resultat = nombre1 - nombre2
+elif operacio == "*":
+    resultat = nombre1 * nombre2
+elif operacio == "/":
+    if nombre2 != 0:
+        resultat = nombre1 / nombre2
+    else:
+        print("Error: Divisió per zero.")
+        resultat = None
+if resultat is not None:
+    print(f"El resultat de {nombre1} {operacio} {nombre2} és: {resultat}")
 
 # Exercici 3: Any de traspàs
 # Demana a l'usuari que introdueixi un any i determina si és de traspàs.
 # Un any és de traspàs si és divisible per 4, excepte si és divisible per 100
 # però no per 400.
-
+any = int(input("Introdueix un any: "))
+if (any % 4 == 0 and any % 100 != 0) or (any % 400 == 0):
+    print(f"L'any {any} és de traspàs.")
+else:
+    print(f"L'any {any} no és de traspàs.")
 # Exercici 4: Classificar edats
 # Demana a l'usuari que introdueixi una edat i classifica-la en:
 # - Nadó (0-2 anys)
@@ -22,24 +50,55 @@
 # - Adolescent (13-17 anys)
 # - Adult (18-64 anys)
 # - Persona gran (65 anys o més)
-
+edad = int(input("Introdueix una edat: "))
+if edad < 0:
+    print("L'edat no pot ser negativa.")
+elif edad <= 2:
+    print("Nadó")
+elif edad <= 12:
+    print("Infant")
+elif edad <= 17:
+    print("Adolescent")
+elif edad <= 64:
+    print("Adult")
+else:
+    print("Persona gran")
 # Exercici 5: Qualitat del senyal Wi-Fi
 # Demana el nivell de senyal rebut (RSSI) en dBm i classifica la cobertura:
 # - -50 dBm o superior: excel·lent
 # - Entre -67 dBm i menys de -50 dBm: bona
 # - Entre -75 dBm i menys de -67 dBm: feble
 # - Inferior a -75 dBm: molt feble
-
+nivel_senyal = int(input("Introdueix el nivell de senyal Wi-Fi (en dBm): "))
+if nivel_senyal >= -50:
+    print("Cobertura excel·lent")
+elif -67 <= nivel_senyal < -50:
+    print("Cobertura bona")
+elif -75 <= nivel_senyal < -67:
+    print("Cobertura feble")
+else:
+    print("Cobertura molt feble")
 # Exercici 6: Nivell de recepció d'una connexió de fibra òptica
 # Demana la potència òptica rebuda en dBm. Per a aquest exercici, considera
 # acceptable un nivell entre -27 dBm i -8 dBm, ambdós inclosos.
 # Indica si el nivell és massa baix, acceptable o massa alt.
-
+potencia_optica = float(input("Introdueix la potència òptica rebuda (en dBm): "))
+if potencia_optica < -27:
+    print("Nivell massa baix")
+elif -27 <= potencia_optica <= -8:
+    print("Nivell acceptable")
+else:
+    print("Nivell massa alt")
 # Exercici 7: Consum mensual de dades mòbils
 # Demana el consum de dades en GB d'una línia mòbil. El pla inclou 20 GB.
 # Indica si el consum és dins del límit o si l'ha superat; en aquest últim cas,
 # calcula quants GB addicionals s'han consumit.
-
+consum_dades = float(input("Introdueix el consum de dades mòbils (en GB): "))
+if consum_dades <= 20:
+    print("Consum dins del límit")
+else:
+    consum_addicional = consum_dades - 20
+    print(f"Consum superat per {consum_addicional:.2f} GB addicionals")
 # Exercici 8: Diagnòstic d'una connexió de fibra
 # Demana si l'indicador LOS del terminal òptic està encès i si l'indicador
 # d'Internet del router està encès. Segons aquestes dues dades, indica si cal
