@@ -12,6 +12,9 @@
 x = 3.0
 y = 4.0
 # TODO: escriu les importacions i els càlculs.
+import math as matematiques
+magnitud = matematiques.sqrt(x * x + y * y)
+print(magnitud)
 
 # Exercici 2 - Bàsic. Conversions reutilitzables
 # Importa conversions amb l'àlies conv i utilitza les seves funcions.
@@ -22,6 +25,12 @@ y = 4.0
 temperatures = [-10.0, 0.0, 25.0]
 tensions_mv = [0, 3300, 5000]
 # TODO: obtén i mostra dues llistes amb les conversions.
+import conversions as conv
+temperatures_k = [conv.celsius_a_kelvin(t) for t in temperatures]
+tensions_v = [conv.mv_a_volt(v) for v in tensions_mv]
+
+print(temperatures_k)
+print(tensions_v)
 
 # Exercici 3 - Intermedi. Resum d'una xarxa de sensors
 # Importa únicament mitjana del mòdul sensors.
@@ -30,6 +39,9 @@ tensions_mv = [0, 3300, 5000]
 # El mòdul sensors ja defineix el tractament de la llista buida.
 dades = {"T1": [20.0, 22.0], "T2": [18.0], "T3": []}
 # TODO: reutilitza la funció importada per a cada sensor.
+from sensors import mitjana
+resum_mitjanes = {sensor: mitjana(valors) for sensor, valors in dades.items()}
+print(resum_mitjanes)
 
 # Exercici 4 - Repte opcional. Un programa reutilitzable
 # Defineix informe_sensor(nom, lectures) que retorni un diccionari amb
@@ -42,3 +54,42 @@ dades = {"T1": [20.0, 22.0], "T2": [18.0], "T3": []}
 # Protegeix TOTES les demostracions del fitxer amb __name__ == '__main__'.
 # En importar el fitxer no s'ha de mostrar cap sortida.
 # TODO: reorganitza les demostracions dels exercicis 1–3 dins de main().
+import math as matematiques
+import conversions as conv
+from sensors import mitjana
+
+def informe_sensor(nom, lectures):
+    return {
+        "nom": nom,
+        "nombre": len(lectures),
+        "mitjana": mitjana(lectures),
+    }
+
+
+def main():
+    # Exercici 1: Magnitud d'una mesura
+    x = 3.0
+    y = 4.0
+    modul = matematiques.sqrt(x * x + y * y)
+    print(modul)
+
+    # Exercici 2: Conversions reutilitzables (adapta el nom de les funcions si cal)
+    temperatures = [-10.0, 0.0, 25.0]
+    tensions_mv = [0, 3300, 5000]
+    temperatures_k = [conv.celsius_a_kelvin(t) for t in temperatures]
+    tensions_v = [conv.mv_a_volt(v) for v in tensions_mv]
+    print(temperatures_k)
+    print(tensions_v)
+
+    # Exercici 3: Resum d'una xarxa de sensors
+    dades = {"T1": [20.0, 22.0], "T2": [18.0], "T3": []}
+    resum_mitjanes = {sensor: mitjana(valors) for sensor, valors in dades.items()}
+    print(resum_mitjanes)
+
+    # Exercici 4: Informes de sensor
+    print(informe_sensor("T1", [20.0, 22.0]))
+    print(informe_sensor("T0", []))
+
+
+if __name__ == "__main__":
+    main()
